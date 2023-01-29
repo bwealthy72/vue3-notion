@@ -80,7 +80,6 @@ export const useNotionBlock = (props: Readonly<NotionBlockProps>) => {
   });
 
   const isType = (t: string | string[]) => {
-    console.log(visible.value, type.value);
     if (Array.isArray(t)) {
       return visible.value && t.includes(type.value);
     }
