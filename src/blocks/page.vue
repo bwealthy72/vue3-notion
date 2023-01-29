@@ -8,8 +8,7 @@ import { getTextContent } from "@/lib/utils";
 
 const props = defineProps({ ...defineNotionProps });
 //@ts-ignore
-const { format, title, block, pass, hasPageLinkOptions, pageLinkProps } =
-  useNotionBlock(props);
+const { format, title, block, pass, hasPageLinkOptions, pageLinkProps } = useNotionBlock(props);
 
 const coverStyle = computed(() => {
   const coverPosition = (1 - (format.value.page_cover_position || 0.5)) * 100;

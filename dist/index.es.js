@@ -18629,7 +18629,6 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues
       });
       return temp;
     });
-    console.log(headerObjects);
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("div", _hoisted_1$3, [
         (openBlock(true), createElementBlock(Fragment, null, renderList(unref(headerObjects), (header) => {

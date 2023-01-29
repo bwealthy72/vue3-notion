@@ -22,7 +22,7 @@ const headerObjects = computed(() => {
     ) {
       let level = 0;
       if (temp.length) {
-        let prevBlock = temp[temp.length - 1];
+      let prevBlock = temp[temp.length - 1];
         if (value.value.type == "header") {
         } else if (value.value.type == "sub_header") {
           level = 1;
