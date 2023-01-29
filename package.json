@@ -37,7 +37,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "dev": "vite -c vite-dev.config.ts",
+    "dev": "vite -c vite-dev.config.ts --port 3001",
     "dev:build": "vue-tsc --noEmit && vite build -c vite-dev.config.ts",
     "build": "vue-tsc --noEmit && vite build && rollup -c",
     "build:rollup": "rollup -c",
