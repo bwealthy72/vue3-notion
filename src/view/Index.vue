@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { NotionRenderer } from "../components"
-import { useGetPageBlocks } from "../lib/composables"
-import { mapPageUrl, pageLinkOptions } from "../lib/props"
+import { NotionRenderer } from "../components";
+import { useGetPageBlocks } from "../lib/composables";
+import { mapPageUrl, pageLinkOptions } from "../lib/props";
 
 // const blockMap = ref()
 
@@ -12,8 +12,8 @@ import { mapPageUrl, pageLinkOptions } from "../lib/props"
 //   // todo tester: 235057194b954a60ace89c052a65d102
 //   blockMap.value = await getPageBlocks("4b2dc28a5df74034a943f8c8e639066a")
 // })
-
-const { data: blockMap } = useGetPageBlocks("4b2dc28a5df74034a943f8c8e639066a")
+//fresh-seeker-86b.notion.site/Vue-3-v-slot-06604ac5e06846e29ac229734c1d7809
+const { data: blockMap } = useGetPageBlocks("06604ac5e06846e29ac229734c1d7809");
 </script>
 
 <template>
@@ -28,4 +28,3 @@ const { data: blockMap } = useGetPageBlocks("4b2dc28a5df74034a943f8c8e639066a")
     />
   </div>
 </template>
-

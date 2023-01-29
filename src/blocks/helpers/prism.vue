@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import Prism from "prismjs"
-import { computed, toRefs, useSlots } from "vue"
+import Prism from "prismjs";
+import { computed, toRefs, useSlots } from "vue";
 
-const slots = useSlots()
+const slots = useSlots();
 const props = defineProps({
   code: {
     type: String,
@@ -15,17 +15,19 @@ const props = defineProps({
     type: String,
     default: "markup",
   },
-})
+});
 
-const { inline, language } = toRefs(props)
-const className = computed(() => `language-${language.value}`)
+const { inline, language } = toRefs(props);
+const className = computed(() => `language-${language.value}`);
 
-const defaultSlot = (slots && slots.default && slots.default()) || []
+const defaultSlot = (slots && slots.default && slots.default()) || [];
 const code =
   props.code || (defaultSlot && defaultSlot.length && defaultSlot[0]?.children)
     ? (defaultSlot[0].children as string)
-    : ""
-const d = computed(() => Prism?.highlight(code, Prism?.languages[language.value], "en"))
+    : "";
+const d = computed(() =>
+  Prism?.highlight(code, Prism?.languages[language.value], "en")
+);
 </script>
 
 <template>
