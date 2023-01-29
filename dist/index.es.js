@@ -52,7 +52,8 @@ const getListNumber = (blockId, blockMap) => {
 const defaultMapImageUrl = (image = "", block) => {
   const url = new URL(`https://www.notion.so${image.startsWith("/image") ? image : `/image/${encodeURIComponent(image)}`}`);
   if (block && !image.includes("/images/page-cover/")) {
-    const table = block.value.parent_table === "space" ? "block" : block.value.parent_table;
+    const parentTable = block.value.parent_table;
+    const table = ["space", "collection"].includes(parentTable) ? "block" : block.value.parent_table;
     url.searchParams.set("table", table);
     url.searchParams.set("id", block.value.id);
     url.searchParams.set("cache", "v2");
@@ -157,6 +158,7 @@ const useNotionBlock = (props) => {
     return props.blockMap[(_a2 = block.value) == null ? void 0 : _a2.value.parent_id];
   });
   const isType = (t) => {
+    console.log(visible.value, type.value);
     if (Array.isArray(t)) {
       return visible.value && t.includes(type.value);
     }
@@ -13582,9 +13584,9 @@ const _sfc_main$w = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues
 }));
 const _hoisted_1$q = ["target", "href"];
 const _hoisted_2$h = ["target", "href"];
-const _hoisted_3$7 = ["target", "href"];
-const _hoisted_4$3 = { key: 5 };
-const _hoisted_5$3 = {
+const _hoisted_3$8 = ["target", "href"];
+const _hoisted_4$4 = { key: 5 };
+const _hoisted_5$4 = {
   key: 7,
   class: "notion-inline-code"
 };
@@ -13684,12 +13686,12 @@ const _sfc_main$v = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues
         href: unref(decoratorValue)
       }, [
         createVNode(_component_NotionDecorator, mergeProps({ content: unref(nextContent) }, unref(pass)), null, 16, ["content"])
-      ], 8, _hoisted_3$7)) : unref(decorators).length === 0 ? (openBlock(), createElementBlock("span", _hoisted_4$3, toDisplayString(unref(text2)), 1)) : unref(decoratorKey) === "h" ? (openBlock(), createElementBlock("span", {
+      ], 8, _hoisted_3$8)) : unref(decorators).length === 0 ? (openBlock(), createElementBlock("span", _hoisted_4$4, toDisplayString(unref(text2)), 1)) : unref(decoratorKey) === "h" ? (openBlock(), createElementBlock("span", {
         key: 6,
         class: normalizeClass("notion-" + unref(decoratorValue))
       }, [
         createVNode(_component_NotionDecorator, mergeProps({ content: unref(nextContent) }, unref(pass)), null, 16, ["content"])
-      ], 2)) : unref(decoratorKey) === "c" ? (openBlock(), createElementBlock("code", _hoisted_5$3, [
+      ], 2)) : unref(decoratorKey) === "c" ? (openBlock(), createElementBlock("code", _hoisted_5$4, [
         createVNode(_component_NotionDecorator, mergeProps({ content: unref(nextContent) }, unref(pass)), null, 16, ["content"])
       ])) : unref(decoratorKey) === "b" ? (openBlock(), createElementBlock("b", _hoisted_6$3, [
         createVNode(_component_NotionDecorator, mergeProps({ content: unref(nextContent) }, unref(pass)), null, 16, ["content"])
@@ -13731,12 +13733,12 @@ const _sfc_main$u = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues
 }));
 const _hoisted_1$p = { class: "notion-row" };
 const _hoisted_2$g = ["href"];
-const _hoisted_3$6 = { class: "notion-bookmark-title" };
-const _hoisted_4$2 = {
+const _hoisted_3$7 = { class: "notion-bookmark-title" };
+const _hoisted_4$3 = {
   key: 0,
   class: "notion-bookmark-description"
 };
-const _hoisted_5$2 = { class: "notion-bookmark-link" };
+const _hoisted_5$3 = { class: "notion-bookmark-link" };
 const _hoisted_6$2 = ["alt", "src"];
 const _hoisted_7$2 = {
   key: 0,
@@ -13760,15 +13762,15 @@ const _sfc_main$t = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues
           href: unref(properties).link[0][0]
         }, [
           createElementVNode("div", null, [
-            createElementVNode("div", _hoisted_3$6, [
+            createElementVNode("div", _hoisted_3$7, [
               createVNode(_sfc_main$u, mergeProps({
                 text: unref(title) || unref(properties).link
               }, unref(pass)), null, 16, ["text"])
             ]),
-            unref(description) ? (openBlock(), createElementBlock("div", _hoisted_4$2, [
+            unref(description) ? (openBlock(), createElementBlock("div", _hoisted_4$3, [
               createVNode(_sfc_main$u, mergeProps({ text: unref(description) }, unref(pass)), null, 16, ["text"])
             ])) : createCommentVNode("", true),
-            createElementVNode("div", _hoisted_5$2, [
+            createElementVNode("div", _hoisted_5$3, [
               unref(f).bookmark_icon ? (openBlock(), createElementBlock("img", {
                 key: 0,
                 alt: unref(getTextContent)(unref(title) || unref(properties).link),
@@ -13805,11 +13807,11 @@ const _hoisted_1$o = {
   width: "20"
 };
 const _hoisted_2$f = /* @__PURE__ */ createElementVNode("path", { d: "M16,1H4v28h22V11L16,1z M16,3.828L23.172,11H16V3.828z M24,27H6V3h8v10h10V27z M8,17h14v-2H8V17z M8,21h14v-2H8V21z M8,25h14v-2H8V25z" }, null, -1);
-const _hoisted_3$5 = [
+const _hoisted_3$6 = [
   _hoisted_2$f
 ];
 function _sfc_render$2(_ctx, _cache) {
-  return openBlock(), createElementBlock("svg", _hoisted_1$o, _hoisted_3$5);
+  return openBlock(), createElementBlock("svg", _hoisted_1$o, _hoisted_3$6);
 }
 var DefaultPageIcon = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["render", _sfc_render$2]]);
 const _hoisted_1$n = ["src", "alt"];
@@ -17669,7 +17671,10 @@ const _hoisted_1$k = {
   key: 0,
   class: /* @__PURE__ */ normalizeClass(["notion-code"])
 };
-const _hoisted_2$b = {
+const _hoisted_2$b = { class: "header" };
+const _hoisted_3$5 = { class: "lang" };
+const _hoisted_4$2 = { class: "caption" };
+const _hoisted_5$2 = {
   key: 1,
   class: /* @__PURE__ */ normalizeClass(["notion-code"])
 };
@@ -17677,13 +17682,24 @@ const __default__$k = {
   name: "NotionCode"
 };
 const _sfc_main$n = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, __default__$k), {
-  props: __spreadValues({ overrideLang: String, overrideLangClass: String }, defineNotionProps),
+  props: __spreadValues({
+    overrideLang: String,
+    overrideLangClass: String
+  }, defineNotionProps),
   setup(__props) {
     const props = __props;
     const { properties } = useNotionBlock(props);
+    const oriLang = computed(() => {
+      var _a2, _b, _c;
+      return (_c = (_b = (_a2 = properties.value) == null ? void 0 : _a2.language) == null ? void 0 : _b[0]) == null ? void 0 : _c[0];
+    });
     const lang = computed(() => {
       var _a2, _b, _c, _d;
       return props.overrideLang || ((_d = (_c = (_b = (_a2 = properties.value) == null ? void 0 : _a2.language) == null ? void 0 : _b[0]) == null ? void 0 : _c[0]) == null ? void 0 : _d.toLowerCase());
+    });
+    const caption = computed(() => {
+      var _a2, _b, _c;
+      return (_c = (_b = (_a2 = properties.value) == null ? void 0 : _a2.caption) == null ? void 0 : _b[0]) == null ? void 0 : _c[0];
     });
     const langClass = computed(() => {
       return props.overrideLangClass || `language-${lang.value}`;
@@ -17697,13 +17713,20 @@ const _sfc_main$n = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues
     });
     return (_ctx, _cache) => {
       return unref(supported) ? (openBlock(), createElementBlock("div", _hoisted_1$k, [
-        createVNode(_sfc_main$o, { language: unref(lang) }, {
+        createElementVNode("div", _hoisted_2$b, [
+          createElementVNode("div", _hoisted_3$5, toDisplayString(unref(oriLang)), 1),
+          createElementVNode("div", _hoisted_4$2, toDisplayString(unref(caption)), 1)
+        ]),
+        createVNode(_sfc_main$o, {
+          language: unref(lang),
+          caption: unref(caption)
+        }, {
           default: withCtx(() => [
             createTextVNode(toDisplayString(unref(computedSlot)), 1)
           ]),
           _: 1
-        }, 8, ["language"])
-      ])) : (openBlock(), createElementBlock("div", _hoisted_2$b, [
+        }, 8, ["language", "caption"])
+      ])) : (openBlock(), createElementBlock("div", _hoisted_5$2, [
         createElementVNode("pre", null, [
           createElementVNode("div", {
             class: normalizeClass(unref(langClass))
@@ -17820,7 +17843,8 @@ const _sfc_main$k = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues
           class: "notion-image-inset",
           alt: unref(alt) || "Notion image",
           src: unref(src)
-        }, null, 8, _hoisted_1$h)
+        }, null, 8, _hoisted_1$h),
+        createElementVNode("caption", null, toDisplayString(unref(alt)), 1)
       ], 4)) : (openBlock(), createElementBlock("img", {
         key: 1,
         alt: unref(alt),
@@ -18144,7 +18168,7 @@ const _sfc_main$i = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues
         class: "notion-asset-wrapper",
         style: normalizeStyle([unref(isType)("image") ? "width:100%" : ""])
       }, [
-        unref(isType)("image") ? (openBlock(), createBlock(_sfc_main$k, normalizeProps(mergeProps({ key: 0 }, unref(pass))), null, 16)) : unref(isType)(["embed", "video", "figma", "maps"]) ? (openBlock(), createBlock(_sfc_main$l, normalizeProps(mergeProps({ key: 1 }, unref(pass))), null, 16)) : unref(isType)("drive") ? (openBlock(), createBlock(_sfc_main$j, normalizeProps(mergeProps({ key: 2 }, unref(pass))), null, 16)) : createCommentVNode("", true),
+        unref(isType)("image") ? (openBlock(), createBlock(_sfc_main$k, normalizeProps(mergeProps({ key: 0 }, unref(pass))), null, 16)) : unref(isType)(["embed", "video", "figma", "maps", "codepen"]) ? (openBlock(), createBlock(_sfc_main$l, normalizeProps(mergeProps({ key: 1 }, unref(pass))), null, 16)) : unref(isType)("drive") ? (openBlock(), createBlock(_sfc_main$j, normalizeProps(mergeProps({ key: 2 }, unref(pass))), null, 16)) : createCommentVNode("", true),
         unref(caption) ? (openBlock(), createElementBlock("figcaption", _hoisted_1$f, [
           createVNode(_sfc_main$u, mergeProps({ text: unref(caption) }, unref(pass)), null, 16, ["text"])
         ])) : createCommentVNode("", true)
@@ -18709,7 +18733,16 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
           renderSlot(_ctx.$slots, "default")
         ]),
         _: 3
-      }, 16)) : unref(isType)(["image", "embed", "figma", "video", "audio", "drive", "maps"]) ? (openBlock(), createBlock(_sfc_main$i, normalizeProps(mergeProps({ key: 13 }, unref(pass))), null, 16)) : unref(isType)("table") ? (openBlock(), createBlock(NotionTable, normalizeProps(mergeProps({ key: 14 }, unref(pass))), {
+      }, 16)) : unref(isType)([
+        "image",
+        "embed",
+        "figma",
+        "video",
+        "audio",
+        "drive",
+        "maps",
+        "codepen"
+      ]) ? (openBlock(), createBlock(_sfc_main$i, normalizeProps(mergeProps({ key: 13 }, unref(pass))), null, 16)) : unref(isType)("table") ? (openBlock(), createBlock(NotionTable, normalizeProps(mergeProps({ key: 14 }, unref(pass))), {
         default: withCtx(() => [
           renderSlot(_ctx.$slots, "default")
         ]),
