@@ -10,8 +10,7 @@ interface BlockLevel extends Block {
 
 const props = defineProps({ ...defineNotionProps });
 //@ts-ignore
-const { block, parent, hasPageLinkOptions, pageLinkProps } =
-  useNotionBlock(props);
+const { block, parent, hasPageLinkOptions, pageLinkProps } = useNotionBlock(props);
 const headers = ["header", "sub_header", "sub_sub_header"];
 const headerObjects = computed(() => {
   if (!props.blockMap) return;
