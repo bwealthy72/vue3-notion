@@ -158,7 +158,6 @@ const useNotionBlock = (props) => {
     return props.blockMap[(_a2 = block.value) == null ? void 0 : _a2.value.parent_id];
   });
   const isType = (t) => {
-    console.log(visible.value, type.value);
     if (Array.isArray(t)) {
       return visible.value && t.includes(type.value);
     }
